@@ -45,13 +45,13 @@
         <div class="row align-items-center">
           
           <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0">Classy<span class="text-primary">Ads</span>  </a></h1>
+            <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0">Space<span class="text-primary"> SaaS</span>  </a></h1>
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="index.html">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="listings.html">Ads</a></li>
                 <li class="has-children">
                   <a href="about.html">About</a>
@@ -63,10 +63,18 @@
                   </ul>
                 </li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{% url 'contact:us' %}">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="ml-xl-3 login"><a href="{% url 'accounts:profile' %}"><span class="border-left pl-xl-4"></span>{{profile}}</a></li>
+                <li class="ml-xl-3 login"><a href="{% url 'logout' %}">Log Out</a></li>
 
-                <li class="ml-xl-3 login"><a href="login.html"><span class="border-left pl-xl-4"></span>Log In</a></li>
-                <li><a href="register.html">Register</a></li>
+                {% else %}
+                <li class="ml-xl-3 login"><a href="{% url 'login' %}"><span class="border-left pl-xl-4"></span>Log In</a></li>
+                <li><a href="{% url 'accounts:signup' %}">Register</a></li>
+
+                {% endif %}
+               
+                
 
                 <li><a href="#" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
               </ul>
@@ -86,9 +94,9 @@
     
     
     <!--start body form other files -->
-    {% block content %}
+    {% block body %}
     
-    {% endblock content %}
+    {% endblock body %}
    <!--end body form other files -->
 
     <!-- footer start-->

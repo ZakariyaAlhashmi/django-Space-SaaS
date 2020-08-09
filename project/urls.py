@@ -21,8 +21,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls' , namespace='accounts')),
     path('admin/', admin.site.urls),
+    path('contact_us/', include('contact_us.urls' , namespace='contact')),
+    path('api-auth/', include('rest_framework.urls')),
 #    path('HomePage/',include('HomePage.urls')),
+
 
 ]
 

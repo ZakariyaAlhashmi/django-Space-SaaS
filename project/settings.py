@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     
     ## My Apps
     'HomePage',
+    'bootstrap4',
+    'contact_us',
+    'rest_framework',
 
 ]
 
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -133,3 +137,27 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+LOGIN_REDIRECT_URL = '/'
+
+
+
+
+########################
+# Email settings
+
+SERVER_EMAIL = 'zmssh06@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'pefdwizzicvjlrvs'
+EMAIL_HOST_USER = SERVER_EMAIL
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+ADMINS = [
+    ('Space SaaS', 'zmssh06@gmail.com'),
+]
+
+MANAGERS = ADMINS
+#########################
